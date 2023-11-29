@@ -4,10 +4,10 @@
 
     .button {
         background-color: $primary-color;
-        color: white;
+        color: wheat;
         padding: $button-padding;
         cursor: pointer;
-        transition: background-color $transition-duration;
+        transition: background-color $transition-duration ease;
     
         &:hover, &:focus, &:active {
         background-color: $secondary-color;

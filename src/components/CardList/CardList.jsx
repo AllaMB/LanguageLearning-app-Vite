@@ -8,7 +8,7 @@
                 return (
                 <div className={style.cardList}>
                     {words.map((word) => (
-                    <CardItem key={word.id} word={word.english} translation={word.russian} />
+                    <CardItem key={word.id} word={word.english} transcription={word.transcription} translation={word.russian} />
                     ))}
                 </div>
                 );

@@ -1,4 +1,4 @@
-                import React, { useState} from 'react';
+                import React, { useState } from 'react';
                 import style from './CardItem.module.scss';
 
 
@@ -14,7 +14,7 @@
             <h2 className={style.word}>{word}</h2>
             <p className={style.transcription}>{transcription}</p>
         {flipped && <p className={style.translation}>{translation}</p>}
-        <i className={style.hint}>Нажмите, чтобы увидеть перевод</i>
+        <p className={style.hint}>Нажмите, чтобы увидеть перевод</p>
             </div>
         );
         }

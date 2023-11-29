@@ -66,7 +66,7 @@
                 <td>
                 {editMode && editedWord && editedWord.id === word.id ? (
                     <input type="text" 
-                    value={word.russian} 
+                    value={editedWord.russian} 
                     onChange={(e) => handleFieldChange('russian', e.target.value)}
                     />
                 ) : (

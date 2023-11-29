@@ -1,11 +1,13 @@
 import React from 'react';
 import WordList from '../WordList/WordList';
+import WordCardCarousel from '../WordCardCarousel/WordCardCarousel';
 import CardList from '../CardList/CardList';
 import Header  from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import WordTable from '../WordTable/WordTable';
 import style from './App.module.scss';
+
 
 
 
@@ -37,7 +39,7 @@ const App = () => {
     <div className="container__app">
       <Header />
       <Main />
-      <CardList words={words} />
+      <WordCardCarousel words={words} />
       <h1>Word Learning App</h1>
       <WordTable words={words} />
       <Footer />

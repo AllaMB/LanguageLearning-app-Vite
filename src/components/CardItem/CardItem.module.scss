@@ -5,15 +5,15 @@
             display: grid;
             grid-template-rows: 40% 20% 20% [hint-start] 20%;
             justify-items: center;
-            width: 400px;
-            height: 450px;
-            margin: 0 50px 0 40px;
+            width: 25rem;
+            height: 28.125rem;
+            margin: 0 3.125rem 0 2.5rem;
             padding: 1rem;
             font-family: Georgia, 'Times New Roman', Times, serif; 
             font-size: 1rem;
             border: 1px solid white; 
-            border-radius: 5px;
-            background-color: pink; 
+            border-radius: 25px;
+            background-color: $secondary-color; 
         
             &:hover {
             cursor: pointer;
@@ -30,7 +30,7 @@
             font-family: 'Times New Roman', Times, serif;
             font-size: 1.25rem;
             font-weight: 600;
-            color: green; 
+            color: $text-color;
         }
         
         .transcription {
