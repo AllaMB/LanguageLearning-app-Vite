@@ -1,0 +1,35 @@
+@import '../../assets/styles/vars.scss';
+@import '../../assets/styles/styles.scss';
+
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333; /* Choose your desired background color */
+    color: white;
+  }
+  
+  .logo {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  nav {
+    display: flex;
+  }
+  
+  nav a {
+    margin-left: 1rem;
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+  
+    &:hover {
+      color: pink; /* Choose your desired hover color */
+    }
+  }
+  

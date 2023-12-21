@@ -15,7 +15,7 @@ export default function Main() {
     return (
         <div className="container">
             <div className="state">
-            <h2>Hello world</h2>
+            <h2>How to use this app</h2>
             <p>Lorem ipsum dolor
             </p>
         </div>

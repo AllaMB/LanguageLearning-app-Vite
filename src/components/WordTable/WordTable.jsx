@@ -1,4 +1,3 @@
-    //displaying a list of words in the form of a table with the ability to edit
     import React, { useState } from "react";
     import style from './WordTable.module.scss';
     import Word from "../Word/Word";
@@ -91,3 +90,4 @@
     };
 
     export default WordTable;
+

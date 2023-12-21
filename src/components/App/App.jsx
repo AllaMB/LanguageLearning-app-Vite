@@ -1,4 +1,6 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 import WordList from '../WordList/WordList';
 import WordCardCarousel from '../WordCardCarousel/WordCardCarousel';
 import CardList from '../CardList/CardList';
@@ -6,6 +8,7 @@ import Header  from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import WordTable from '../WordTable/WordTable';
+import NotFoundPage from '../NotFoundPage/NotFoundPage'; 
 import style from './App.module.scss';
 
 
@@ -35,15 +38,23 @@ const App = () => {
     {"id":"14855","english":"happy","transcription":"[ ˈhæpi ]","russian":"счастливый","tags":"emotions","tags_json":"[\"emotions\"]"}
   ];
 
+
   return (
+    <Router>
     <div className="container__app">
       <Header />
       <Main />
+      <Routes>
+          <Route path="/" element={<WordTable words={words} />} />
+          <Route path="/game" element={<h1>English words cards</h1>} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       <WordCardCarousel words={words} />
       <h1>Word Learning App</h1>
-      <WordTable words={words} />
+      {/* <WordTable words={words} /> */}
       <Footer />
     </div>
+  </Router>
   );
 };
 export default App;
