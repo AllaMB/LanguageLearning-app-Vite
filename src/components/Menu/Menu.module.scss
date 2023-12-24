@@ -7,17 +7,19 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #333; /* Choose your desired background color */
     color: white;
   }
   
   .logo {
-    text-decoration: none;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
+    img {
+      max-width: 100%;
+      max-height: 6.25rem;
+      height: auto;
+      display: block;
+      border-radius: 10%;
+    }
   }
-  
+
   nav {
     display: flex;
   }
@@ -29,7 +31,7 @@
     transition: color 0.3s ease;
   
     &:hover {
-      color: pink; /* Choose your desired hover color */
+      color: pink;
     }
   }
   

@@ -1,15 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
-import WordList from '../WordList/WordList';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import WordCardCarousel from '../WordCardCarousel/WordCardCarousel';
-import CardList from '../CardList/CardList';
-import Header  from '../Header/Header';
+import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
-import WordTable from '../WordTable/WordTable';
-import NotFoundPage from '../NotFoundPage/NotFoundPage'; 
+import { Home, About, ExploreWords, GamePage, NotFoundPage } from '../Pages';
 import style from './App.module.scss';
+// import WordList from '../WordList/WordList';
 
 
 
@@ -45,13 +42,14 @@ const App = () => {
       <Header />
       <Main />
       <Routes>
-          <Route path="/" element={<WordTable words={words} />} />
-          <Route path="/game" element={<h1>English words cards</h1>} />
+          <Route path="/" element={<Home/>}/>
+          <Route path="/about" element={<About/>}/>
+          <Route path="/exploreWords" element={<ExploreWords/>}/>
+          <Route path="/game" element={<GamePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      <WordCardCarousel words={words} />
-      <h1>Word Learning App</h1>
-      {/* <WordTable words={words} /> */}
+        <WordCardCarousel words={words} />
+        <h1>Word Learning App</h1>
       <Footer />
     </div>
   </Router>
