@@ -11,8 +11,7 @@ function NotFoundPage() {
         <p>Let's get you back on track:</p>
         <ul>
             <li><a href="/">Go to Home</a></li>
-            <li><a href="/dashboard">Visit Dashboard</a></li>
-            <li><a href="/explore">Explore Words</a></li>
+            <li><a href="/exploreWords">Explore Words</a></li>
         </ul>
     </div>
 </main>
