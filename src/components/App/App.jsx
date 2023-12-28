@@ -1,15 +1,10 @@
   import React from 'react';
-  import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+  import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
   //components 
   import Header from '../Header/Header';
-  import Main from '../Main/Main';
   import Footer from '../Footer/Footer';
-  import WordCardCarousel from '../WordCardCarousel/WordCardCarousel';
   import { Home, About, ExploreWords, GamePage, NotFoundPage } from '../Pages';
-  import style from './App.module.scss';
-  import WordList from '../WordList/WordList';
-
 
 
 
@@ -49,40 +44,8 @@
             <Route path="/game" element={<GamePage words={words}/>} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-          {/* Conditional rendering based on the route */}
-{/* Home page */}
-          {window.location.pathname === '/' && (
-            <div>
-              <h1>We'll put something on the Home page</h1>
-            </div>
-          )}
-{/* About page */}
-{window.location.pathname === '/about' && (
-            <div>
-              <h1>We'll put something on the About page</h1>
-            </div>
-          )}
 
-{/* //Game Page// */}
-{window.location.pathname === '/game' && (
-            <div>
-              <GamePage words={words} />
-            </div>
-          )}
-
-
-{/* Explore Words Page */}
-  {window.location.pathname === '/exploreWords' && (
-            <div>
-              <h1>Lorem ipsum dolor sit amet.</h1>
-              <WordTable />
-            </div>
-          )}
-
-
-
-          <Footer />
-          
+          <Footer />          
       </div>
     </Router>
     );

@@ -1,19 +1,19 @@
     import React from 'react';
-    import { Link } from 'react-router-dom';
+    import { NavLink } from 'react-router-dom';
     import style from './Menu.module.scss'; 
     import logoImage from '../../assets/images/logoImage.png';
 
     function Menu() {
     return (
         <div className={style.menu}>
-        <Link to="/" className={style.logo}>
-        <img src={logoImage} alt="Logo" />
-        </Link>
+        <NavLink to="/" className={style.logo}>
+            <img src={logoImage} alt="Logo" />
+        </NavLink>
         <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/game">Cards</Link>
-            <Link to="/exploreWords">Explore Words</Link>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/about">About</NavLink>
+            <NavLink to="/game" >Cards</NavLink>
+            <NavLink to="/exploreWords">Explore Words</NavLink>
         </nav>
         </div>
     );

@@ -1,6 +1,8 @@
 import React from 'react';
 import WordCardCarousel from '../../WordCardCarousel/WordCardCarousel';
 import styles from './GamePage.module.scss';
+
+
 const GamePage = ({ words }) => {
   return (
     <div className={styles.container}>
