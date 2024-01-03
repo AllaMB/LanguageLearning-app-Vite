@@ -1,0 +1,14 @@
+@import '../../assets/styles/vars.scss';
+@import '../../assets/styles/styles.scss';
+
+.container__app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}

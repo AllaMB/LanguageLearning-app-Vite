@@ -1,0 +1,17 @@
+@import '../../assets/styles/vars.scss';
+@import '../../assets/styles/styles.scss';
+
+
+    .button {
+        background-color: $primary-color;
+        color: wheat;
+        padding: $button-padding;
+        cursor: pointer;
+        transition: background-color $transition-duration ease;
+    
+        &:hover, &:focus, &:active {
+        background-color: $secondary-color;
+        transition: background-color $transition-duration;
+        }
+    }
+

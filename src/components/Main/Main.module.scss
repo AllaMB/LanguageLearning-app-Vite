@@ -1,0 +1,59 @@
+    @import '../../assets/styles/vars.scss';
+    @import '../../assets/styles/styles.scss';
+
+
+    .main {
+        padding: 1.25rem;
+    }
+    
+    .section {
+        margin-bottom: 1.25rem;
+    }
+    
+    .section-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0.625rem;
+    }
+    
+    .word-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .word {
+        background-color: #ecf0f1;
+        border: 1px solid $primary-color;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color $transition-duration ease;
+    
+        &:hover {
+        background-color: $secondary-color;
+        }
+    
+        h2 {
+        color: $primary-color;
+        margin-bottom: 10px;
+        }
+    
+        p {
+        margin-top: 10px;
+        }
+    
+        button {
+        background-color: $primary-color;
+        color: white;
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: background-color $transition-duration ease;
+    
+        &:hover, &:focus, &:active {
+            background-color: $secondary-color;
+        }
+        }
+    }
+    

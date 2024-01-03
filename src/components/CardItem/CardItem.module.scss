@@ -1,0 +1,47 @@
+        @import '../../assets/styles/vars.scss';
+        @import '../../assets/styles/styles.scss';
+
+        .card {
+            display: grid;
+            grid-template-rows: 40% 20% 20% [hint-start] 20%;
+            justify-items: center;
+            width: 25rem;
+            height: 28.125rem;
+            margin: 0 3.125rem 0 2.5rem;
+            padding: 1rem;
+            font-family: Georgia, 'Times New Roman', Times, serif; 
+            font-size: 1rem;
+            border: 1px solid white; 
+            border-radius: 25px;
+            background-color: $secondary-color; 
+        
+            &:hover {
+            cursor: pointer;
+            }
+        }
+        
+        .word {
+            align-self: end;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 2rem;
+        }
+        
+        .translation {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: $text-color;
+        }
+        
+        .transcription {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 1rem;
+            color: #333;
+        }
+        .hint {
+            grid-row-start: hint-start;
+            justify-self: end;
+            align-self: end;
+            font-size: 0.8rem;
+        }
+        

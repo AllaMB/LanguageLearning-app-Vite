@@ -1,0 +1,20 @@
+@import 'vars';
+
+    html,
+    body {
+    margin: 0;
+    padding: 0;
+    }
+
+    * {
+    box-sizing: border-box;
+    }
+
+    a {
+    text-decoration: none;
+    }
+
+    // Fonts
+    body {
+    font-family: $font-family;
+    }

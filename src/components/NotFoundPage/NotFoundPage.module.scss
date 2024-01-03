@@ -1,0 +1,45 @@
+@import '../../assets/styles/vars.scss';
+@import '../../assets/styles/styles.scss';
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.content {
+    text-align: center;
+    max-width: 25rem;
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #ff4d4d; 
+    }
+
+    p {
+        margin: 0.5rem 0;
+        color: #666;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+
+        li {
+            margin: 0.5rem 0;
+
+            a {
+                color: #007bff; 
+                text-decoration: none;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: #0056b3;
+            }
+        }
+    }
+}
+}
