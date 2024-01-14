@@ -1,21 +1,23 @@
-                import React, { useState, useEffect } from 'react';
-                import Word from '../Word/Word';
+                import React, { useState, useEffect, useRef} from 'react';
                 import style from './CardItem.module.scss';
 
 
-        function CardItem({ word, transcription, translation }) {
-        const [flipped, setFlipped] = useState(false);
+        function CardItem({ word, transcription, translation, flipped, onClick }) {
+        const hintRef = useRef(null);
 
-        const handleClick = () => {
-            setFlipped(!flipped);
-        };
+
+        useEffect(() => {
+            if(hintRef) {
+                hintRef.current.focus();
+            }
+        }, [hintRef, flipped]);
 
         return (
-            <div className={style.card} onClick={handleClick}>
+            <div className={style.card} onClick={onClick}>
             <h2 className={style.word}>{word}</h2>
             <p className={style.transcription}>{transcription}</p>
         {flipped && <p className={style.translation}>{translation}</p>}
-        <p className={style.hint}>Нажмите, чтобы увидеть перевод</p>
+        <button className={style.hint} ref={hintRef}>Нажмите, чтобы увидеть перевод</button>
             </div>
         );
         }

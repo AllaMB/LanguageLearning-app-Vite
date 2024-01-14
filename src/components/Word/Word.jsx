@@ -1,6 +1,6 @@
 //displaying a single word with the ability to show/hide the translation
 import React, { useState }  from 'react';
-import style from './Word.module.scss';
+import styles from './Word.module.scss';
 
 const Word = ({ word }) => {
   const [showTranslation, setShowTranslation] = useState(false);

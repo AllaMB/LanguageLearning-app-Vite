@@ -5,12 +5,22 @@
     const WordCardCarousel = ({ words, initialIndex = 0, onWordLearned }) => {
     const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
+    const [flipped, setFlipped] = useState(false);
+
     useEffect(() => {
         setCurrentIndex(initialIndex);
     }, [initialIndex]);
 
+
+    const handleFlip = () => {
+        setFlipped(!flipped);
+    };
+
+
     const handlePrevClick = () => {
         setCurrentIndex((prevIndex) => (prevIndex === 0 ? words.length - 1 : prevIndex - 1));
+
+        setFlipped(false);
     };
 
     const handleNextClick = () => {
@@ -22,6 +32,7 @@
 
         return newIndex;
         });
+        setFlipped(false);
     };
 
     const showCard = words.length > 0;
@@ -34,6 +45,8 @@
                 word={words[currentIndex].english}
                 transcription={words[currentIndex].transcription}
                 translation={words[currentIndex].russian}
+                flipped={flipped}
+                onClick={handleFlip}
             />
             <div className={style.buttons}>
                 <button onClick={handlePrevClick}>&lt; Previous</button>
