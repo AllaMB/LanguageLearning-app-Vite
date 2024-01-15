@@ -1,4 +1,4 @@
-  import React from 'react';
+  import React, { useState } from 'react';
   import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
   //components 
@@ -9,7 +9,7 @@
 
 
   const App = () => {
-    const words = [
+    const [words, setWords] = useState([
       {"id":"14836","english":"content","transcription":"[ ˈkɒntɛnt ]","russian":"удовлетворенный","tags":"emotions","tags_json":"[\"emotions\"]"},
       {"id":"14837","english":"raspberry","transcription":"[ ˈrɑːzbɛri ]","russian":"малина","tags":"fruits","tags_json":"[\"fruits\"]"},
       {"id":"14838","english":"waiter","transcription":"[ ˈweɪtər ]","russian":"официант","tags":"professions","tags_json":"[\"professions\"]"},
@@ -30,24 +30,38 @@
       {"id":"14853","english":"lipstick","transcription":"[ ˈlɪpstɪk ]","russian":"губная помада","tags":"cosmetics","tags_json":"[\"cosmetics\"]"},
       {"id":"14854","english":"sleepy","transcription":"[ ˈsliːpi ]","russian":"сонный","tags":"emotions","tags_json":"[\"emotions\"]"},
       {"id":"14855","english":"happy","transcription":"[ ˈhæpi ]","russian":"счастливый","tags":"emotions","tags_json":"[\"emotions\"]"}
-    ];
+    ]);
 
-
+    const updateWord = (editedWord) => {
+      // Update the word in the state
+      setWords((prevWords) =>
+        prevWords.map((word) => (word.id === editedWord.id ? editedWord : word))
+      );
+    };
+  
+    const removeWord = (wordId) => {
+      // Remove the word from the state
+      setWords((prevWords) => prevWords.filter((word) => word.id !== wordId));
+    };
     return (
       <Router>
-      <div className="container__app">
-        <Header />
-        <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/about" element={<About/>}/>
-            <Route path="/exploreWords" element={<ExploreWords words={words} />} />
-            <Route path="/game" element={<GamePage words={words}/>} />
+        <div className="container__app">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/exploreWords"
+              element={<ExploreWords words={words} updateWord={updateWord} removeWord={removeWord} />}
+            />
+            <Route path="/game" element={<GamePage words={words} />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-
-          <Footer />          
-      </div>
-    </Router>
+  
+          <Footer />
+        </div>
+      </Router>
     );
   };
+  
   export default App;

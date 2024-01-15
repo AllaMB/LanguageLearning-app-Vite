@@ -38,24 +38,18 @@
     const showCard = words.length > 0;
 
     return (
-        <div className={style.carousel}>
-        {showCard && (
-            <>
-            <CardItem
-                word={words[currentIndex].english}
-                transcription={words[currentIndex].transcription}
-                translation={words[currentIndex].russian}
-                flipped={flipped}
-                onClick={handleFlip}
-            />
-            <div className={style.buttons}>
-                <button onClick={handlePrevClick}>&lt; Previous</button>
-                <button onClick={handleNextClick}>Next &gt;</button>
-            </div>
-            </>
-        )}
-        {!showCard && <p>No cards available.</p>}
-        </div>
+ <div className={style.buttons}>
+    <button onClick={handlePrevClick}>&lt; </button>
+    <CardItem
+        word={words[currentIndex].english}
+        transcription={words[currentIndex].transcription}
+        translation={words[currentIndex].russian}
+        flipped={flipped}
+        onClick={handleFlip}
+    />
+    <button onClick={handleNextClick}> &gt;</button>
+</div>
+
     );
     };
 

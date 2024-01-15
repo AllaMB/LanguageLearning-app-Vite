@@ -27,16 +27,16 @@
                     display: inline-block;
                     font-family: Arial, sans-serif;
                     font-size: 1em;
-                    height: 3.125rem;
+                    height: 4.125rem;
                     padding: 0 1.563rem;
                     transition: all 200ms;
             
                     &:hover {
-                        background-color: $secondary-color;
+                        background-color: rgb(112, 49, 112);
                         transform: scale(1.05);
                     }
                     &:first-child {
-                        margin-right: 0.625rem;
+                        margin-bottom: 0.625rem;
                     }
                 
                     &:last-child {

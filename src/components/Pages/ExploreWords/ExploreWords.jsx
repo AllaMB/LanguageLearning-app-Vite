@@ -1,11 +1,13 @@
 import React from "react";
 import WordTable from "../../WordTable/WordTable";
 
-export default function ExploreWords({words, updateWord }) {
+const ExploreWords = ({ words, updateWord, removeWord }) => {
     return (
         <div>
-            <h1>Explore Words</h1>
-            <WordTable words={words} updateWord={updateWord} />
+            <h1>Enhance your vocabulary! </h1>
+            <WordTable words={words} updateWord={updateWord} removeWord={removeWord} />
         </div>
     );
 }
+
+export default ExploreWords;

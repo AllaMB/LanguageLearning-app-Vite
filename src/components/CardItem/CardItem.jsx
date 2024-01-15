@@ -2,7 +2,7 @@
                 import style from './CardItem.module.scss';
 
 
-        function CardItem({ word, transcription, translation, flipped, onClick }) {
+        function CardItem({ id, word, transcription, translation, flipped, onClick }) {
         const hintRef = useRef(null);
 
 

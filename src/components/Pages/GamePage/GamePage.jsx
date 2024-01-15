@@ -13,10 +13,9 @@ const GamePage = ({ words }) => {
   return (
     <div className={styles.container}>
       <h1>Swipe right and learn new words </h1>
-      <p>Words learned today: {wordsLearned}</p>
-      {/* Pass the handler function as a prop */}
-      <WordCardCarousel words={words} onWordLearned={handleWordLearned} />
-    </div>
+      <p>Words learned today: {wordsLearned}</p> 
+      <WordCardCarousel words={words} onWordLearned={handleWordLearned}  />  
+    </div> 
   );
 };
 

@@ -33,6 +33,6 @@ button {
   transition: background-color $transition-duration ease;
 
   &:hover, &:focus, &:active {
-    background-color: $success-color;
+    background-color: $primary-color;
   }
 }
