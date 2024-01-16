@@ -59,6 +59,7 @@
           </Routes>
   
           <Footer />
+          
         </div>
       </Router>
     );

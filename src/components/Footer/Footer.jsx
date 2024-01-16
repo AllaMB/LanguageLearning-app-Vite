@@ -1,17 +1,15 @@
     import React from 'react';
-    import style from './Footer.module.scss'
+    import { Link } from 'react-router-dom';
+    import style from './Footer.module.scss';
 
     function Footer() {
     return (
         <div className={style.container__footer}>
         <a href="https://github.com/AllaMB">Author's GitHub</a>
-        <div className={style.contacts}>
-        
-
-        </div>
+        <div className={style.contacts}></div>
         <div className={style.nav}>
-            <a href="#">About project</a>
-            <a href="#">Contacts</a>
+            <Link to="/">Home</Link>
+            <Link to="/about">About project</Link>
         </div>
         </div>
     );
