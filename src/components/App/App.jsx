@@ -1,6 +1,6 @@
   import React, { useState, useContext } from 'react';
   import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-  import { AppProvider } from "../Context/AppContext";
+  import { AppProvider, useAppContext } from "../Context/AppContext";
   import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 
 
@@ -9,9 +9,8 @@
   import Footer from '../Footer/Footer';
   import { Home, About, ExploreWords, GamePage, NotFoundPage } from '../Pages';
 
-
-
   const App = () => {
+    const { words, updateWord, removeWord } = useAppContext();
     return (
       <Router>
         <AppProvider>
