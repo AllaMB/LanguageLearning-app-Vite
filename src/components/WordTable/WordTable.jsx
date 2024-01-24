@@ -144,9 +144,8 @@ import { useAppContext } from "../Context/AppContext";
                     {editMode && editedWord && editedWord.id === word.id ? (
                         <>
                         <button
-                            onClick={handleSaveClick}
-                            disabled={Object.keys(invalidFields).length > 0}
-                        >
+                            onClick={handleSaveClick}>
+                        
                             Save
                         </button>
                         <button onClick={handleCancelClick}>Cancel</button>

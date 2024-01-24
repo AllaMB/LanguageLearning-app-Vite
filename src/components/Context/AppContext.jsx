@@ -1,4 +1,3 @@
-// AppContext.jsx
 import React, { createContext, useState, useEffect, useContext } from "react";
 
 export const AppContext = createContext();
@@ -26,6 +25,7 @@ export function AppProvider({ children }) {
 
   const updateWord = async (updatedWord) => {
     try {
+      setLoading(true);
       const response = await fetch(`http://itgirlschool.justmakeit.ru/api/words/${updatedWord.id}/update`, {
         method: 'POST',
         headers: {
@@ -43,11 +43,14 @@ export function AppProvider({ children }) {
       );
     } catch (error) {
       setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   const removeWord = async (wordId) => {
     try {
+      setLoading(true);
       const response = await fetch(`http://itgirlschool.justmakeit.ru/api/words/${wordId}/delete`, {
         method: 'POST',
       });
@@ -59,6 +62,20 @@ export function AppProvider({ children }) {
       setWords((prevWords) => prevWords.filter((word) => word.id !== wordId));
     } catch (error) {
       setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const addWord = async (newWord) => {
+    try {
+      setLoading(true);
+      // Assuming the new word has an 'id' property, you can add it to the state
+      setWords((prevWords) => [...prevWords, newWord]);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -68,6 +85,7 @@ export function AppProvider({ children }) {
     error,
     updateWord,
     removeWord,
+    addWord,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
