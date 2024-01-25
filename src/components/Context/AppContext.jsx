@@ -70,7 +70,6 @@ export function AppProvider({ children }) {
   const addWord = async (newWord) => {
     try {
       setLoading(true);
-      // Assuming the new word has an 'id' property, you can add it to the state
       setWords((prevWords) => [...prevWords, newWord]);
     } catch (error) {
       setError(error.message);

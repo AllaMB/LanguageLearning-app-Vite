@@ -1,31 +1,36 @@
-    import React from 'react';
+// ErrorBoundary.js
+import React from 'react';
+import "./ErrorBoundary.module.scss";
 
-    class ErrorBoundary extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { hasError: false };
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // Log the error to an error reporting service
+    console.error(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="error-container">
+          <div className="error-message">
+            <h1>Oops! Something went wrong.</h1>
+            <p>We're working to fix this issue. Please try again later.</p>
+          </div>
+        </div>
+      );
     }
 
-    static getDerivedStateFromError(error) {
-        return { hasError: true };
-    }
+    return this.props.children;
+  }
+}
 
-    componentDidCatch(error, errorInfo) {
-        // You can log the error to a service like Sentry
-        console.error('Error caught by ErrorBoundary:', error, errorInfo);
-    }
-
-    render() {
-        if (this.state.hasError) {
-        return (
-            <div style={{ color: 'red', textAlign: 'center', marginTop: '20px' }}>
-            <h2>Something went wrong. Please try again later.</h2>
-            </div>
-        );
-        }
-
-        return this.props.children;
-    }
-    }
-
-    export default ErrorBoundary;
+export default ErrorBoundary;

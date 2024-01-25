@@ -7,7 +7,7 @@
   import Header from '../Header/Header';
   import Footer from '../Footer/Footer';
   import { Home, About, ExploreWords, GamePage, NotFoundPage } from '../Pages';
-  import AddWordForm from '../AddWordForm/AddWordForm';
+  import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 
   const App = () => {
     return (
@@ -16,11 +16,46 @@
           <div className="container__app">
             <Header />
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/exploreWords/*" element={<ExploreWords />} />
-              <Route path="/game" element={<GamePage />} />
-              <Route path="*" element={<NotFoundPage />} />
+              <Route
+                path="/"
+                element={
+                  <ErrorBoundary>
+                    <Home />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/about"
+                element={
+                  <ErrorBoundary>
+                    <About />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/exploreWords/*"
+                element={
+                  <ErrorBoundary>
+                    <ExploreWords />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/game"
+                element={
+                  <ErrorBoundary>
+                    <GamePage />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="*"
+                element={
+                  <ErrorBoundary>
+                    <NotFoundPage />
+                  </ErrorBoundary>
+                }
+              />
             </Routes>
             <Footer />
           </div>
@@ -30,4 +65,3 @@
   };
   
   export default App;
-  

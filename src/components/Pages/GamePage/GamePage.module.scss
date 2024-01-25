@@ -2,7 +2,6 @@
 @import '../../../assets/styles/styles.scss';
 
 
-
 .container {
   display: flex;
   flex-direction: column;
@@ -16,5 +15,26 @@
     margin-bottom: 1.5rem;
     font-size: 2rem;
     color: $primary-color;
+  }
+
+  .howToUse {
+    max-width: 600px;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    line-height: 1.5;
+    color: $font-family;
+  }
+
+  .counter {
+    font-size: 1.5rem;
+    color: $primary-color;
+    margin-top: 1rem;
+
+    span {
+      font-weight: bold;
+      font-size: 2rem;
+      color: #ff6f61;
+    }
   }
 }
