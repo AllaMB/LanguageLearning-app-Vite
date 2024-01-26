@@ -1,21 +1,29 @@
-    import React, { useState, useContext } from 'react';
-    import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-    import wordStore from '../MobX/WordStore';
-    import WordTable from '../WordTable/WordTable';
-    import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import React, { useContext, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider, MobXProviderContext } from 'mobx-react';
+import wordStore from '../MobX/WordStore';
+import WordTable from '../WordTable/WordTable';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
+// components
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import { Home, About, ExploreWords, GamePage, NotFoundPage } from '../Pages';
 
-    //components 
-    import Header from '../Header/Header';
-    import Footer from '../Footer/Footer';
-    import { Home, About, ExploreWords, GamePage, NotFoundPage } from '../Pages';
-  import { Provider } from 'mobx-react';
+const App = () => {
+  const { wordStore } = useContext(MobXProviderContext) || {};
 
-    const App = () => {
-      return (
-        <Router>
-          <Provider wordStore={wordStore}>
-          <ErrorBoundary>
+  useEffect(() => {
+    if (wordStore) {
+      // Fetch words when the component mounts
+      wordStore.fetchWords();
+    }
+  }, [wordStore]);
+
+  return (
+    <Router>
+      <Provider wordStore={wordStore || {}}>
+        <ErrorBoundary>
           <div className="container__app">
             <Header />
             <Routes>
@@ -23,18 +31,17 @@
               <Route path="/about" element={<About />} />
               <Route
                 path="/exploreWords"
-                element={<ExploreWords words={words} updateWord={updateWord} removeWord={removeWord} />}
+                element={<ExploreWords />}
               />
-              <Route path="/game" element={<GamePage words={words} />} />
+              <Route path="/game" element={<GamePage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <Footer />
           </div>
-          </ErrorBoundary>
-          </Provider>
-        </Router>
-        );
-      };
-    
+        </ErrorBoundary>
+      </Provider>
+    </Router>
+  );
+};
 
-    export default App;
+export default App;

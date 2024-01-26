@@ -1,4 +1,6 @@
     import React from 'react';
+    import style from "./ErrorBoundary.module.scss";
+    import "./ErrorBoundary.module.scss";
 
     class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -11,15 +13,19 @@
     }
 
     componentDidCatch(error, errorInfo) {
-        // You can log the error to a service like Sentry
-        console.error('Error caught by ErrorBoundary:', error, errorInfo);
+        // Log the error to an error reporting service
+        console.error(error, errorInfo);
     }
 
     render() {
         if (this.state.hasError) {
         return (
-            <div style={{ color: 'red', textAlign: 'center', marginTop: '20px' }}>
-            <h2>Something went wrong. Please try again later.</h2>
+                <div className={style['error-container']}>
+                <div className={style['error-message']}>
+                <iframe src="https://giphy.com/embed/xxHqpovWonBMkSy1cf" width="480" height="215" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/metadigital-meta-web-development-digital-xxHqpovWonBMkSy1cf">via GIPHY</a></p> 
+                <h1>Oops! Something went wrong.</h1>
+                <p>We're working to fix this issue. Please try again later.</p>
+            </div>
             </div>
         );
         }

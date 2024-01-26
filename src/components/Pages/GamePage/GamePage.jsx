@@ -52,14 +52,14 @@ const GamePage = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
-        Welcome to Word Explorer! 🌍📚
+        Let's learn new words 
       </h1>
       <p className={styles.howToUse}>
         Explore new words and expand your vocabulary. 
         Click the arrows to navigate between words,
-        and click on each card to reveal its translation. Have fun learning!
+        and click on each card to reveal its translation. 
       </p>
-      <p className={styles.counter}>Words Learned: {wordsLearned}</p>
+      <p className={styles.counter}>Words Learned today: {wordsLearned}</p>
       <WordCardCarousel words={gameWords} onWordLearned={handleWordLearned} />
     </div>
   );
