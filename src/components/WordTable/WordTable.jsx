@@ -1,183 +1,163 @@
-        import React, { useEffect } from "react";
-        import styles from "./WordTable.module.scss";
-        import Word from "../Word/Word";
-        import { observer } from "mobx-react";
-        import wordStore from "../MobX/WordStore";
+    import React, {useEffect} from "react";
+    import styles from "./WordTable.module.scss";
+    import {inject, observer} from "mobx-react";
 
-        const WordTable = observer(() => {
-            const {
-            words,
-            setEditMode,
-            setEditedWord,
-            setInvalidFields,
-            editMode,
-            editedWord,
-            invalidFields,
-            updateWord,
-            removeWord,
-            addWord,
-            loading,
-            error,
-            fetchWords, 
-            } = wordStore;
-    
-            useEffect(() => {
-                wordStore.fetchWords(); // Fetch words when the component mounts
-            }, []);
+    const WordTable = inject('wordsStore')(
+    observer(({wordsStore}) => {
+        useEffect(() => {
+        wordsStore.fetchWords(); // Fetch words when the component mounts
+        }, []);
 
-            if (loading) {
-            return <div>Loading...🕵️‍♂️</div>;
-            }
-        
-            if (error) {
-            return (
-                <div className={styles.container}>
-                <p>
+        if (wordsStore.loading) {
+        return <div>Loading...🕵️‍♂️</div>;
+        }
+
+        if (wordsStore.error) {
+        return (
+            <div className={styles.container}>
+            <p>
                 Oops! Something went wrong. The words escaped 🏃‍♂️💨. Please try refreshing the page.
-                </p>
-                <p>Error: {error}</p>
+            </p>
+            <p>Error: {wordsStore.error}</p>
             </div>
-            );
-            }
-        
-            const handleEditClick = (word) => {
-            setEditMode(true);
-            setEditedWord({ ...word });
-            };
-        
-            const handleCancelClick = () => {
-            setEditMode(false);
-            setEditedWord(null);
-            setInvalidFields({});
-            };
-        
-            const handleSaveClick = () => {
-            const hasEmptyField = Object.values(editedWord).some((field) => !field.trim()
-            );
-        
-            if (hasEmptyField) {
-                setInvalidFields((prevInvalidFields) => {
-                const updatedInvalidFields = {};
-                Object.keys(editedWord).forEach((field) => {
-                    if (!editedWord[field].trim()) {
-                    updatedInvalidFields[field] = true;
+        );
+        }
+
+        const handleCancelClick = () => {
+        wordsStore.setEditingState(wordsStore.editedWord.id, false);
+        wordsStore.setEditedWord(null);
+        wordsStore.setInvalidFields({});
+        };
+
+
+        const handleSaveClick = () => {
+        const hasEmptyField = Object.values(wordsStore.editedWord).some((field) => !field.trim()
+        );
+
+        if (hasEmptyField) {
+            wordsStore.setInvalidFields((prevInvalidFields) => {
+            const updatedInvalidFields = {};
+            Object.keys(wordsStore.editedWord).forEach((field) => {
+                if (!wordsStore.editedWord[field].trim()) {
+                updatedInvalidFields[field] = true;
+                }
+            });
+            return {...prevInvalidFields, ...updatedInvalidFields};
+            });
+            alert("Please fill in all fields.");
+        } else {
+            wordsStore.updateWord(wordsStore.editedWord);
+            wordsStore.setEditingState(wordsStore.editedWord.id, false);
+            wordsStore.setEditedWord(null);
+            wordsStore.setInvalidFields({});
+        }
+        };
+
+        const handleFieldChange = (fieldName, value) => {
+        wordsStore.setEditedWord((prevEditedWord) => ({
+            ...prevEditedWord,
+            [fieldName]: value,
+        }));
+
+        wordsStore.setInvalidFields((prevInvalidFields) => ({
+            ...prevInvalidFields,
+            [fieldName]: false,
+        }));
+
+        if (!value.trim()) {
+            wordsStore.setInvalidFields((prevInvalidFields) => ({
+            ...prevInvalidFields,
+            [fieldName]: true,
+            }));
+        }
+        };
+
+        const handleEditClick = (word) => {
+        wordsStore.setEditingState(word.id, true);
+        wordsStore.setEditedWord({ ...word });
+        };
+
+        const handleRemoveClick = (wordId) => {
+        wordsStore.removeWord(wordId);
+        };
+
+
+        return (
+        <table>
+            <thead>
+            <tr>
+            <th>Word</th>
+            <th>Transcription</th>
+            <th>Translation</th>
+            <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {wordsStore.words.map((word) => (
+            <tr key={word.id}>
+                <td>
+                {word.isEditing ? (
+                    <input
+                    type="text"
+                    value={wordsStore.editedWord.english}
+                    onChange={(e) => handleFieldChange("english", e.target.value)}
+                    style={{
+                        borderColor: wordsStore.invalidFields.english ? "red" : "",
+                    }}
+                    />
+                ) : (
+                    word.english
+                )}
+                </td>
+                <td>
+                {word.isEditing ? (
+                    <input
+                    type="text"
+                    value={wordsStore.editedWord.transcription}
+                    onChange={(e) =>
+                        handleFieldChange("transcription", e.target.value)
                     }
-                });
-                return { ...prevInvalidFields, ...updatedInvalidFields };
-                });
-                alert("Please fill in all fields.");
-            } else {
-                updateWord(editedWord);
-                setEditMode(false);
-                setEditedWord(null);
-                setInvalidFields({});
-            }
-            };
+                    style={{
+                        borderColor: wordsStore.invalidFields.transcription ? "red" : "",
+                    }}
+                    />
+                ) : (
+                    word.transcription
+                )}
+                </td>
+                <td>
+                {word.isEditing ? (
+                    <input
+                    type="text"
+                    value={wordsStore.editedWord.russian}
+                    onChange={(e) => handleFieldChange("russian", e.target.value)}
+                    style={{
+                        borderColor: wordsStore.invalidFields.russian ? "red" : "",
+                    }}
+                    />
+                ) : (
+                    word.russian
+                )}
+                </td>
+                <td>
+                {word.isEditing ? (
+                    <>
+                    <button onClick={handleSaveClick}>Save</button>
+                    <button onClick={handleCancelClick}>Cancel</button>
+                    <button onClick={() => handleRemoveClick(word.id)}>Delete</button>
+                    </>
+                ) : (
+                    <>
+                    <button onClick={() => handleEditClick(word)}>Edit</button>
+                    <button onClick={() => handleRemoveClick(word.id)}>Delete</button>
+                    </>
+                )}
+                </td>
+            </tr>
+            ))}
+            </tbody>
+        </table>
+        );
+    }))
 
-                const handleFieldChange = (fieldName, value) => {
-                    setEditedWord((prevEditedWord) => ({
-                    ...prevEditedWord,
-                    [fieldName]: value,
-                    }));
-
-                    // Remove the validation for the changed field
-                    setInvalidFields((prevInvalidFields) => ({
-                    ...prevInvalidFields,
-                    [fieldName]: false,
-                    }));
-
-                    // If the changed field is now empty, mark it as invalid
-                    if (!value.trim()) {
-                    setInvalidFields((prevInvalidFields) => ({
-                        ...prevInvalidFields,
-                        [fieldName]: true,
-                    }));
-                    }
-                };
-
-                const handleRemoveClick = (wordId) => {
-                    // Call the removeWord function with the ID of the word to be removed
-                    removeWord(wordId);
-                };
-
-                return (
-                    <table>
-                    <thead>
-                        <tr>
-                        <th>Word</th>
-                        <th>Transcription</th>
-                        <th>Translation</th>
-                        <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {words.map((word) => (
-                        <tr key={word.id}>
-                            <td>
-                            {editMode && editedWord && editedWord.id === word.id ? (
-                                <input
-                                type="text"
-                                value={editedWord.english}
-                                onChange={(e) => handleFieldChange("english", e.target.value)}
-                                style={{
-                                    borderColor: invalidFields.english ? "red" : "",
-                                }}
-                                />
-                            ) : (
-                                word.english
-                            )}
-                            </td>
-                            <td>
-                            {editMode && editedWord && editedWord.id === word.id ? (
-                                <input
-                                type="text"
-                                value={editedWord.transcription}
-                                onChange={(e) =>
-                                    handleFieldChange("transcription", e.target.value)
-                                }
-                                style={{
-                                    borderColor: invalidFields.transcription ? "red" : "",
-                                }}
-                                />
-                            ) : (
-                                word.transcription
-                            )}
-                            </td>
-                            <td>
-                            {editMode && editedWord && editedWord.id === word.id ? (
-                                <input
-                                type="text"
-                                value={editedWord.russian}
-                                onChange={(e) =>
-                                    handleFieldChange("russian", e.target.value)
-                                }
-                                style={{
-                                    borderColor: invalidFields.russian ? "red" : "",
-                                }}
-                                />
-                            ) : (
-                                word.russian
-                            )}
-                            </td>
-                            <td>
-                            {editMode && editedWord && editedWord.id === word.id ? (
-                                <>
-                                <button onClick={handleSaveClick} >Save</button>
-                                <button onClick={handleCancelClick}>Cancel</button>
-                                <button onClick={() => handleRemoveClick(word.id)}>Delete</button>
-                                </>
-                            ) : (
-                                <>
-                                <button onClick={() => handleEditClick(word)}>Edit</button>
-                                <button onClick={() => handleRemoveClick(word.id)}>Delete</button>
-                                </>
-                            )}
-                            </td>
-                        </tr>
-                        ))}
-                    </tbody>
-                    </table>
-                );
-                })
-
-                export default WordTable;
+    export default WordTable;

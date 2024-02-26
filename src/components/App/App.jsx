@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider, MobXProviderContext } from 'mobx-react';
-import wordStore from '../MobX/WordStore';
+import wordStore from '../../assets/store/MobX/WordStore';
 import WordTable from '../WordTable/WordTable';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 

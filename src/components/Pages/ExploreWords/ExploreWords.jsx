@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 import WordTable from "../../WordTable/WordTable";
-import wordStore from "../../MobX/WordStore";
+import wordStore from "../../../assets/store/MobX/WordStore";
 
 const ExploreWords = observer(() => {
     const { words, updateWord, removeWord } = wordStore;

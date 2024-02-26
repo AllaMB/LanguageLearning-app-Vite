@@ -1,18 +1,18 @@
-import { makeAutoObservable } from 'mobx';
+import {makeAutoObservable} from 'mobx';
 import axios from 'axios';
 
-  class WordStore {
-    words = [];
-    loading = false;
-    error = null;
-    editMode = false;
-    editedWord = null;
-    invalidFields = {};
-  
-    constructor() {
-      makeAutoObservable(this);
-    }
-  
+class WordStore {
+  words = [];
+  loading = false;
+  error = null;
+  editMode = false;
+  editedWord = null;
+  invalidFields = {};
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+
   async fetchWords() {
     this.loading = true;
     try {
@@ -24,7 +24,18 @@ import axios from 'axios';
       this.error = error.message;
       this.loading = false;
     }
-  }  
+  }
+
+  setEditingState(wordId, isEditing) {
+    const updatedWords = this.words.map(word => {
+      if (word.id === wordId) {
+        return { ...word, isEditing };
+      }
+      return word;
+    });
+    this.setWords(updatedWords);
+  }
+
   setWords(words) {
     this.words = words;
   }
