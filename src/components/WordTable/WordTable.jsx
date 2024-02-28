@@ -150,27 +150,24 @@
                         <td>
                         {editMode && editedWord && editedWord.id === word.id ? (
                         <>
-                    <button onClick={handleSaveClick}>
-                    <img src={saveIcon} alt="Save"/>
-                    </button>
-
-                    <button onClick={handleCancelClick}>
-                    <img src={cancelIcon} alt="Cancel" />
-                    </button>
-                    
-                    <button onClick={() => handleRemoveClick(word.id)}>
-                    <img src={deleteIcon} alt="Delete" />
-                    </button>
+                   <button onClick={handleSaveClick}>
+        <img src={saveIcon} alt="Save" style={{ width: '20px', height: '20px' }} />
+      </button>
+      <button onClick={handleCancelClick}>
+        <img src={cancelIcon} alt="Cancel" style={{ width: '20px', height: '20px' }} />
+      </button>
+      <button onClick={() => handleRemoveClick(word.id)}>
+        <img src={deleteIcon} alt="Delete" style={{ width: '20px', height: '20px' }} />
+      </button>
                     </>
                     ) : (
                     <>
-                    <button onClick={() => handleEditClick(word)}>
-                    <img src={editIcon} alt="Edit" />
-                    </button>
-                        
-                    <button onClick={() => handleRemoveClick(word.id)}>
-                    <img src={deleteIcon} alt="Delete" />
-                    </button>
+                     <button onClick={() => handleEditClick(word)}>
+        <img src={editIcon} alt="Edit" style={{ width: '20px', height: '20px' }} />
+      </button>
+      <button onClick={() => handleRemoveClick(word.id)}>
+        <img src={deleteIcon} alt="Delete" style={{ width: '20px', height: '20px' }} />
+      </button>
                     </>
                     )}
                         </td>
