@@ -17,7 +17,7 @@
             const [invalidFields, setInvalidFields] = useState({});
 
             if (loading) {
-                return <div>Loading...</div>;
+                return <div>Loading...🕵️‍♂️</div>;
             }
             
             if (error) {
@@ -100,7 +100,7 @@
                 </thead>
                 <tbody>
                     {words.map((word) => (
-                    <tr key={word.id}>
+                    <tr key={words.id}>
                         <td>
                         {editMode && editedWord && editedWord.id === word.id ? (
                             <input
