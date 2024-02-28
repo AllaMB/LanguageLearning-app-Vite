@@ -1,6 +1,8 @@
 @import '../../assets/styles/vars.scss';
 @import '../../assets/styles/styles.scss';
 
+
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -33,12 +35,6 @@ button {
   transition: background-color $transition-duration ease;
 
   &:hover, &:focus, &:active {
-    background-color: $secondary-color;
-  }
-
-  img {
-    width: 1em;
-    height: 1em;
-    margin-right: 0.5em;
+    background-color: $primary-color;
   }
 }

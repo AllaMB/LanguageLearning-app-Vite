@@ -11,7 +11,6 @@
         </NavLink>
         <nav>
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
             <NavLink to="/game" >Cards</NavLink>
             <NavLink to="/exploreWords">Explore Words</NavLink>
         </nav>

@@ -13,8 +13,13 @@
   text-align: center;
 
   h1 {
+    width: 100%;
     margin-bottom: 1.5rem;
     font-size: 2rem;
     color: $primary-color;
   }
+}
+
+.counter {
+  font-weight: 900;
 }
