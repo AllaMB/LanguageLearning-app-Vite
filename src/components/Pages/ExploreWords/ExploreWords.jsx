@@ -12,7 +12,7 @@ const handleAddWord = (newWord) => {
 };
 
 if (loading) {
-    return <p>Loading...</p>;
+    return <p>Loading...wait...still loading</p>;
 }
 
 if (error) {
@@ -21,11 +21,21 @@ if (error) {
 
 return (
     <div className={style.exploreWordsContainer}>
-    <h1>Enhance your vocabulary! </h1>
-    <AddWordForm onAddWord={handleAddWord} />
-    <WordTable words={words} updateWord={updateWord} removeWord={removeWord} />
-    </div>
-);
+        <h1 className={style.heading}>
+            Create your own vocabulary!
+            </h1>
+            <p className={style.subtitle}>
+                Discover new words and build your personal vocabulary here.
+                </p>
+                <div className={style.addNewForm}>
+        <AddWordForm onAddWord={handleAddWord} />
+        </div>
+            <div className={style.centerTable}>
+            <WordTable words={words} updateWord={updateWord} removeWord={removeWord} />
+        </div>
+    
+        </div>
+    );
 };
 
 export default ExploreWords;

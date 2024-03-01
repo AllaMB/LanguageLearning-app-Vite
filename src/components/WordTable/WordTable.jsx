@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import styles from "./WordTable.module.scss";
 import {inject, observer} from "mobx-react";
-import AddWordForm from "../AddWordForm/AddWordForm";
 
 const WordTable = inject('wordsStore')(
     observer(({ wordsStore }) => {

@@ -4,13 +4,16 @@
 
 
 table {
-  width: 100%;
+  width: 80%;
   border-collapse: collapse;
-  margin-top: 1.25;
+  margin-top: 1.25rem;
+  margin-left: 0.25rem;
+  margin-bottom: 0.25rem;
+  
 }
 
 th, td {
-  border: 1px solid $primary-color;
+  border: 0.094rem solid $primary-color;
   padding: 0.625rem;
   text-align: left;
 }

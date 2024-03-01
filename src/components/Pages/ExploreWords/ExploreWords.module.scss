@@ -1,9 +1,26 @@
 @import '../../../assets/styles/vars.scss';
 @import '../../../assets/styles/styles.scss';
 
-h1 {
-    width: 100%;
-    padding: 20px;
+.exploreWordsContainer {
+    text-align: center;
 }
 
 
+.centerTable, .addNewForm {
+    display: flex;
+    justify-content: center;
+}
+
+.heading {
+    font-size: 2.5rem;
+    color: $primary-color;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: black;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease;
+}
