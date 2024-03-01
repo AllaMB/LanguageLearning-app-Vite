@@ -7,12 +7,12 @@
     "/search": {
     "target": "https://www.google.com",
     "changeOrigin": true
-      },
-      "/api": {
-      "target": "http://itgirlschool.justmakeit.ru",
-       "changeOrigin": true
-    }
+  },
+  "/api": {
+    "target": "http://itgirlschool.justmakeit.ru",
+    "changeOrigin": true
   }
+},
   "scripts": {
     "dev": "vite",
     "build": "vite build",
